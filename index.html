@@ -4,7 +4,6 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js" integrity="sha512-zJYu9ICC+mWF3+dJ4QC34N9RA0OVS1XtPbnf6oXlvGrLGNB8egsEzu/5wgG90I61hOOKvcywoLzwNmPqGAdATA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
         <title>Spotify API</title>
@@ -15,9 +14,73 @@
                 <img class="logo" src="img/logo-small.svg" alt="#">
             </header>
             <main>
-                <div class="container"></div>
+                <div class="container">
+                    <div v-for="album in albums" class="card">
+                        <img :src="album.poster" :alt="album.title">
+                        <div class="text">
+                            <h3>{{ album.title }}</h3>
+                            <div class="author">{{ album.author }}</div>
+                            <h3>{{ album.year }}</h3>
+                        </div>
+                    </div>
+                </div>
             </main>
         </div>
         <script src="main.js"></script>
     </body>
 </html>
+
+<style scoped>
+/*------------
+    RESET
+------------*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+/*------------
+    COMMON
+------------*/
+.container {
+    margin: auto;
+    max-width: 1400px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+/*------------
+    HEADER
+------------*/
+header {
+    background-color: #06131f;
+}
+.logo {
+    height: 50px;
+    width: 50px;
+    margin: 10px 100px;
+}
+/*------------
+    MAIN
+------------*/
+main {
+    background-color: #1d2d3c;
+}
+.card {
+    color: white;
+    background-color: #112030;
+    text-align: center;
+    margin: 40px;
+    padding: 40px;
+}
+.card img {
+    width: 280px;
+    height: 280px;
+    margin-bottom: 30px;
+}
+
+.author {
+    padding: 10px 0;
+    font-size: 14px;
+}
+</style>

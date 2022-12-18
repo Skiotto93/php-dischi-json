@@ -9,7 +9,7 @@ createApp({
   created() {
     axios.get('http://localhost:8888/php-dischi-json/api.php')
     .then((res) => {
-        console.log(res.data);
+        this.albums = res.data;
     })
   }
 }).mount('#app');
